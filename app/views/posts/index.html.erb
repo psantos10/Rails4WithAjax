@@ -3,13 +3,14 @@
 <%= form_for([@post, @post = Post.new], remote: true) do |f| %>
 
   <div class="form-group">
-    <%= f.text_area :body, placeholder: 'Your Post Here', class: 'form-control', rows: 3 %>
+    <%= f.text_area :body, placeholder: 'Digite aqui o seu texto.', class: 'form-control', rows: 3 %>
+    <em>ENTER = Submeter | SHIFT + ENTER = Mudança de Linha</em>
   </div>
-  <%= f.submit 'Postar', class: 'btn btn-large btn-primary' %>
 <% end %>
 
 <script type="text/javascript">
   $(function(){
+    // Submete o formulário com ENTER e Limpa a caixa de Texto
     $('textarea#post_body').on('keyup', function(e){
       if (e.which == 13 && ! e.shiftKey){
         $(this.form).submit();
