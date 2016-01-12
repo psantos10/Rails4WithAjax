@@ -8,6 +8,17 @@
   <%= f.submit 'Postar', class: 'btn btn-large btn-primary' %>
 <% end %>
 
+<script type="text/javascript">
+  $(function(){
+    $('textarea#post_body').on('keyup', function(e){
+      if (e.which == 13 && ! e.shiftKey){
+        $(this.form).submit();
+        $('#post_body').val('');
+      }
+    });
+  });
+</script>
+
 <div class="my-posts">
   <% @posts.each do |post| %>
     <%= render post %>
