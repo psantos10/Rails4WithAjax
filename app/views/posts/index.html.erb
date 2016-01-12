@@ -1,0 +1,16 @@
+<h1>Listing Posts</h1>
+
+<div class="my-posts">
+  <% @posts.each do |post| %>
+    <%= render post %>
+  <% end %>
+</div>
+
+<h1>Add New Post</h1>
+<div class="form-div">
+  <%= form_for([@post, @post = Post.new], remote: true, 'data-update-target': 'update-container') do |f| %>
+    <%= f.text_field :title, placeholder: 'Título' %><br>
+    <%= f.text_area :body, placeholder: 'Your Post Here' %><br>
+    <%= f.submit %>
+  <% end %>
+</div>
